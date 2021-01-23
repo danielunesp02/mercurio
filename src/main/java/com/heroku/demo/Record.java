@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Record {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     @NotEmpty
     private String data;
