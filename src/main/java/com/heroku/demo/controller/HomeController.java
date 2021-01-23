@@ -53,6 +53,7 @@ public class HomeController {
                              @ModelAttribute("insertRecord") @Valid Record record,
                              BindingResult result) {
         if (!result.hasErrors()) {
+            System.out.println("asdasds");
             repository.save(record);
         }
         return home(model);
