@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 
+@Entity
 public class City {
 
     @Id
@@ -19,7 +20,7 @@ public class City {
     private Integer code;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "state_id", nullable = false)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     private State state;
 

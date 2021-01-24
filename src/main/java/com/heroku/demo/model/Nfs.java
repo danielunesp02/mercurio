@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
 public class Nfs {
 
     @Id
@@ -14,13 +15,10 @@ public class Nfs {
     private long id;
 
     @NotEmpty
-    private NfsConfiguration nfsConfiguration;
-
-    @NotEmpty
     private String nfsCode;
 
     @NotEmpty
-    private BigDecimal totalValue;
+    private String totalValue;
 
     @NotEmpty
     private String iss;
@@ -46,11 +44,11 @@ public class Nfs {
         this.nfsCode = nfsCode;
     }
 
-    public BigDecimal getTotalValue() {
+    public String getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(BigDecimal totalValue) {
+    public void setTotalValue(String totalValue) {
         this.totalValue = totalValue;
     }
 

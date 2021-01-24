@@ -2,10 +2,12 @@ package com.heroku.demo.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class State {
 
     @Id

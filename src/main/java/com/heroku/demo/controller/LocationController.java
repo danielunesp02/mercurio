@@ -1,11 +1,15 @@
 package com.heroku.demo.controller;
 
 
-import com.heroku.demo.model.Record;
 import com.heroku.demo.RecordRepository;
+import com.heroku.demo.model.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping(value = "/example/v1/hotels")
-public class RestController {
+@RequestMapping(value = "/locations")
+public class LocationController {
 
     @Autowired
     private RecordRepository repository;
