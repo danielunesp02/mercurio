@@ -23,10 +23,7 @@ public class Nfs {
     @NotEmpty
     private String iss;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    private City city;
+
 
     public long getId() {
         return id;
@@ -50,14 +47,6 @@ public class Nfs {
 
     public void setTotalValue(String totalValue) {
         this.totalValue = totalValue;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     public String getIss() {

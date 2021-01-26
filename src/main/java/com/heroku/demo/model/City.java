@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class City {
@@ -17,12 +18,18 @@ public class City {
     private String name;
 
     @NotEmpty
+    @Size(min = 1)
     private Integer code;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "state_id", nullable = false)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     private State state;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "nfs_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Nfs nfs;
 
     public long getId() {
         return id;
@@ -56,4 +63,11 @@ public class City {
         this.state = state;
     }
 
+    public Nfs getNfs() {
+        return nfs;
+    }
+
+    public void setNfs(Nfs nfs) {
+        this.nfs = nfs;
+    }
 }

@@ -16,7 +16,7 @@
 package com.heroku.demo.controller;
 
 import com.heroku.demo.model.Record;
-import com.heroku.demo.RecordRepository;
+import com.heroku.demo.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
