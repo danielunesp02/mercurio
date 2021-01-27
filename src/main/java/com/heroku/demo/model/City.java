@@ -17,9 +17,6 @@ public class City {
     @NotEmpty
     private String name;
 
-    @NotEmpty
-    @Size(min = 1)
-    private Integer code;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "state_id", nullable = false)
@@ -47,13 +44,7 @@ public class City {
         this.name = name;
     }
 
-    public Integer getCode() {
-        return code;
-    }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
 
     public State getState() {
         return state;
