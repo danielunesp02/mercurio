@@ -3,6 +3,7 @@ package com.example.filedemo.controller;
 import com.example.filedemo.model.Document;
 import com.example.filedemo.payload.UploadFileResponse;
 import com.example.filedemo.service.DBFileStorageService;
+import com.example.filedemo.service.NfService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class FileController {
     @Autowired
     private DBFileStorageService dbFileStorageService;
 
+    @Autowired
+    private NfService nfService;
+
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         Document document = dbFileStorageService.storeFile(file);
@@ -36,7 +40,8 @@ public class FileController {
                 .path(document.getId())
                 .toUriString();
 
-
+        // processo de serializacao do XML para Json e busca dos atributos atraves do metadado cadastrado
+        nfService.nfParser(file);
 
         return new UploadFileResponse(document.getFileName(), fileDownloadUri,
                 file.getContentType(), file.getSize());

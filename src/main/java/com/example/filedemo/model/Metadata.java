@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 
 @Entity
-public class DocumentMetadata {
+public class Metadata {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

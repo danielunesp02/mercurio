@@ -23,7 +23,7 @@ public class City {
     @OneToOne(fetch = FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
     @JoinColumn(name = "document_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private DocumentMetadata documentMetadata;
+    private Metadata metadata;
 
     public long getId() {
         return id;
@@ -49,11 +49,11 @@ public class City {
         this.state = state;
     }
 
-    public DocumentMetadata getDocument() {
-        return documentMetadata;
+    public Metadata getDocument() {
+        return metadata;
     }
 
-    public void setNfs(DocumentMetadata documentMetadata) {
-        this.documentMetadata = documentMetadata;
+    public void setNfs(Metadata metadata) {
+        this.metadata = metadata;
     }
 }
