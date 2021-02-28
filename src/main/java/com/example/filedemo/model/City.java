@@ -15,6 +15,8 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+
+
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
