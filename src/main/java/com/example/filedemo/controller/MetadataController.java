@@ -26,7 +26,7 @@ public class MetadataController {
     private MetadataRepository metadataRepository;
 
     @PostMapping(value = "/configureMetadata", consumes = "application/json", produces = "application/json")
-    public Metadata configureNFe(@RequestBody Metadata metadata) {
+    public Metadata configureMetadata(@RequestBody Metadata metadata) {
 
         metadataRepository.save(metadata);
 

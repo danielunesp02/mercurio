@@ -10,23 +10,14 @@ public class Metadata {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @NotEmpty
     private String documentCode;
-
-    @NotEmpty
     private String nfsCode;
-
-    @NotEmpty
     private String totalValue;
-
-    @NotEmpty
     private String iss;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "city_id")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
-
 
     public long getId() {
         return id;

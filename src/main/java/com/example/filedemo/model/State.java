@@ -12,14 +12,13 @@ public class State {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty
     private String acronym;
 
-    @NotEmpty
     private String name;
 
     @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
-    private Collection<City> cities;
+    private Collection<City> city;
+
 
     public long getId() {
         return id;
@@ -45,11 +44,11 @@ public class State {
         this.name = name;
     }
 
-    public Collection<City> getCities() {
-        return cities;
+    public Collection<City> getCity() {
+        return city;
     }
 
-    public void setCities(Collection<City> cities) {
-        this.cities = cities;
+    public void setCity(Collection<City> city) {
+        this.city = city;
     }
 }
