@@ -13,9 +13,10 @@ var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSucce
 function uploadSingleFile(file) {
     var formData = new FormData();
     formData.append("file", file);
+    formData.append("text", text);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/uploadFile");
+    xhr.open("POST", "/uploadFile/"+text.value);
 
     xhr.onload = function() {
         console.log(xhr.responseText);

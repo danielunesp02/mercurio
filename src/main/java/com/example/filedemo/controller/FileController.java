@@ -31,8 +31,8 @@ public class FileController {
     @Autowired
     private NfService nfService;
 
-    @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/uploadFile/{metadataId}")
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @PathVariable Long metadataId) {
         Document document = dbFileStorageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -41,7 +41,7 @@ public class FileController {
                 .toUriString();
 
         // processo de serializacao do XML para Json e busca dos atributos atraves do metadado cadastrado
-        nfService.nfParser(file);
+        nfService.nfParser(file, metadataId);
 
         return new UploadFileResponse(document.getFileName(), fileDownloadUri,
                 file.getContentType(), file.getSize());
@@ -51,8 +51,20 @@ public class FileController {
     public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
-                .map(file -> uploadFile(file))
+                .map(file -> uploadFiles(file))
                 .collect(Collectors.toList());
+    }
+
+    public UploadFileResponse uploadFiles(@RequestParam("file") MultipartFile file) {
+        Document document = dbFileStorageService.storeFile(file);
+
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(document.getId())
+                .toUriString();
+
+        return new UploadFileResponse(document.getFileName(), fileDownloadUri,
+                file.getContentType(), file.getSize());
     }
 
     @GetMapping("/downloadFile/{fileId}")

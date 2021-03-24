@@ -1,7 +1,9 @@
 package com.example.filedemo.service;
 
 
+import com.example.filedemo.model.Metadata;
 import com.example.filedemo.repository.DBFileRepository;
+import com.example.filedemo.repository.MetadataRepository;
 import com.jayway.jsonpath.JsonPath;
 import org.json.JSONObject;
 import org.json.XML;
@@ -32,7 +34,10 @@ public class NfService {
     @Autowired
     private DBFileRepository dbFileRepository;
 
-    public void nfParser(MultipartFile file) {
+    @Autowired
+    private MetadataRepository metadataRepository;
+
+    public void nfParser(MultipartFile file, Long metadataId) {
         try {
             File xmlFile = multipartToFile(file, file.getOriginalFilename());
 
@@ -40,13 +45,18 @@ public class NfService {
 
             JSONObject jsonData = XML.toJSONObject(xmlNormalized);
 
-            String numeroNfe = "$['ConsultarNfeServPrestadoResposta']['ListaNfeServPrestado']['CompNfeServPrestado']['NfeServPrestado']['InfNfeServPrestado']['NumeroNfe']";
-            String descricaoNfe = "$['ConsultarNfeServPrestadoResposta']['ListaNfeServPrestado']['CompNfeServPrestado']['NfeServPrestado']['InfNfeServPrestado']['DescricaoNfe']";
-            String dataEmissao = "$['ConsultarNfeServPrestadoResposta']['ListaNfeServPrestado']['CompNfeServPrestado']['NfeServPrestado']['InfNfeServPrestado']['DataEmissao']";
+            //String numeroNfe = "$['ConsultarNfeServPrestadoResposta']['ListaNfeServPrestado']['CompNfeServPrestado']['NfeServPrestado']['InfNfeServPrestado']['NumeroNfe']";
+            //String descricaoNfe = "$['ConsultarNfeServPrestadoResposta']['ListaNfeServPrestado']['CompNfeServPrestado']['NfeServPrestado']['InfNfeServPrestado']['DescricaoNfe']";
+            //String dataEmissao = "$.ConsultarNfeServPrestadoResposta.ListaNfeServPrestado.CompNfeServPrestado.NfeServPrestado.InfNfeServPrestado.ValoresNfe.Aliquota";
+            //String dataEmissao = "$..DataEmissao";
 
-            System.out.println(getInfoDataByJson(jsonData.toString(), numeroNfe));
-            System.out.println(getInfoDataByJson(jsonData.toString(), descricaoNfe));
-            System.out.println(getInfoDataByJson(jsonData.toString(), dataEmissao));
+            Metadata metadata = metadataRepository.getOne(metadataId);
+
+            System.out.println(jsonData.toString());
+
+            System.out.println(getInfoDataByJson(jsonData.toString(), metadata.getNumeroNfe()));
+            System.out.println(getInfoDataByJson(jsonData.toString(), metadata.getDescricaoNfe()));
+            System.out.println(getInfoDataByJson(jsonData.toString(), metadata.getDataEmissao()));
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -67,8 +77,8 @@ public class NfService {
     }
 
 
-    public  static File multipartToFile(MultipartFile multipart, String fileName) throws IllegalStateException, IOException {
-        File convFile = new File(System.getProperty("java.io.tmpdir")+"/"+fileName);
+    public static File multipartToFile(MultipartFile multipart, String fileName) throws IllegalStateException, IOException {
+        File convFile = new File(System.getProperty("java.io.tmpdir") + "/" + fileName);
         multipart.transferTo(convFile);
         return convFile;
     }

@@ -9,8 +9,6 @@ import com.example.filedemo.service.NfService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,16 +40,17 @@ public class MetadataController {
      * @throws
      */
 
-    @PostMapping(value = "/metadata", consumes = "application/json", produces = "application/json")
-    public Metadata configureMetadata(@RequestBody Metadata metadata) {
-        Location location = locationRepository.getOne(new Long(6));
+    @PostMapping(value = "/metadata/{locationId}", consumes = "application/json", produces = "application/json")
+    public Metadata configureMetadata(@RequestBody Metadata metadata, @PathVariable Long locationId) {
+        Location location = locationRepository.getOne(locationId);
         metadata.setLocation(location);
-
         return metadataRepository.save(metadata);
     }
 
-    @PutMapping("/metadata")
-    public Metadata updateMetadata(@RequestBody Metadata metadata) {
+    @PutMapping("/metadata/{locationId}/{metadataId}")
+    public Metadata updateMetadata(@RequestBody Metadata metadata, @PathVariable Long locationId, @PathVariable Long metadataId) {
+        Location location = locationRepository.getOne(locationId);
+        metadata.setLocation(location);
         return metadataRepository.save(metadata);
 
     }
@@ -62,6 +61,9 @@ public class MetadataController {
 
     }
 
-
+    @GetMapping("/metadata/{metadataId}")
+    public Metadata downloadFile(@PathVariable Long metadataId) {
+        return metadataRepository.getOne(metadataId);
+    }
 
 }
