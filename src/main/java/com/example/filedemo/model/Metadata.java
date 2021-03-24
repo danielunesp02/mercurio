@@ -15,9 +15,8 @@ public class Metadata {
     private String totalValue;
     private String iss;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "city_id", nullable = false)
-    private City city;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Location location;
 
     public long getId() {
         return id;
@@ -59,11 +58,11 @@ public class Metadata {
         this.documentCode = documentCode;
     }
 
-    public City getCity() {
-        return city;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

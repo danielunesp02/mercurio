@@ -1,12 +1,7 @@
 package com.example.filedemo.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 public class City {
@@ -15,16 +10,11 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "state_id")
     private State state;
-
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    private Collection<Metadata> metadata;
 
 
     public long getId() {
@@ -51,11 +41,4 @@ public class City {
         this.state = state;
     }
 
-    public Collection<Metadata> getMetadata() {
-        return metadata;
-    }
-
-    public void setMetadata(Collection<Metadata> metadata) {
-        this.metadata = metadata;
-    }
 }
