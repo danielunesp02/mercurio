@@ -1,0 +1,5 @@
+2021-03-26 16:55:24,464 [http-nio-8080-exec-4] INFO  (NfService.java:53) - ---------- Processo de validacao de NF : Nfe.xml
+  2021-03-26 16:56:27,914 [http-nio-8080-exec-7] INFO  (NfService.java:53) - ---------- Processo de validacao de NF : Nfe.xml
+  2021-03-26 16:59:36,711 [http-nio-8080-exec-1] INFO  (NfService.java:53) - ---------- Processo de validacao de NF : Nfe.xml
+  2021-03-26 17:04:56,434 [http-nio-8080-exec-1] INFO  (NfService.java:53) - ---------- Processo de validacao de NF : Nfe.xml
+  
