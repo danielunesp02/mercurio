@@ -18,6 +18,7 @@ public class Result {
     private Long customerId;
     private String uuid;
     private Date date;
+    private String color;
 
     private boolean isValid;
 
@@ -99,5 +100,13 @@ public class Result {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

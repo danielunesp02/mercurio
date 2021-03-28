@@ -20,10 +20,13 @@ public class MetadataList {
     @ColumnDefault("true")
     private boolean enable;
     private String validationMessage;
+    private String validationPositiveMessage;
+    private String validationNegativeMessage;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+    private String color;
 
     public long getId() {
         return id;
@@ -71,5 +74,29 @@ public class MetadataList {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public String getValidationPositiveMessage() {
+        return validationPositiveMessage;
+    }
+
+    public void setValidationPositiveMessage(String validationPositiveMessage) {
+        this.validationPositiveMessage = validationPositiveMessage;
+    }
+
+    public String getValidationNegativeMessage() {
+        return validationNegativeMessage;
+    }
+
+    public void setValidationNegativeMessage(String validationNegativeMessage) {
+        this.validationNegativeMessage = validationNegativeMessage;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

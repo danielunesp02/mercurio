@@ -70,6 +70,7 @@ public class NfService {
             File xmlFile = multipartToFile(file, file.getOriginalFilename());
             String xmlNormalized = normalizeFile(getDocument(xmlFile));
             JSONObject jsonData = XML.toJSONObject(xmlNormalized);
+
             Customer customer = customerRepository.getOne(customerId);
 
             for (MetadataList ml : customer.getMetadataList()) {
@@ -77,15 +78,18 @@ public class NfService {
                 Result result = new Result();
                 if (nfValue.equalsIgnoreCase(ml.getValue())) {
                     result.setValid(true);
+                    result.setMessage(ml.getValidationPositiveMessage());
+
                 } else {
                     result.setValid(false);
+                    result.setMessage(ml.getValidationNegativeMessage());
                 }
-                result.setMessage(ml.getValidationMessage());
                 result.setExpectedValue(ml.getValue());
                 result.setEvidencedValue(nfValue);
                 result.setKey(ml.getKey());
                 result.setCustomerId(customerId);
                 result.setDate(new Date());
+                result.setColor(ml.getColor());
                 result. setUuid(uuid);
                 results.add(result);
             }
