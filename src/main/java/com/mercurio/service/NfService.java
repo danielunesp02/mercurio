@@ -3,7 +3,7 @@ package com.mercurio.service;
 
 import com.jayway.jsonpath.JsonPath;
 import com.mercurio.model.Customer;
-import com.mercurio.model.MetadataList;
+import com.mercurio.model.DocumentAttribute;
 import com.mercurio.model.Result;
 import com.mercurio.repository.CustomerRepository;
 import com.mercurio.repository.DBFileRepository;
@@ -73,23 +73,25 @@ public class NfService {
 
             Customer customer = customerRepository.getOne(customerId);
 
-            for (MetadataList ml : customer.getMetadataList()) {
+            for (DocumentAttribute ml : customer.getDocumentAttribute()) {
                 String nfValue = getInfoDataByJson(jsonData.toString(), ml.getKey());
                 Result result = new Result();
                 if (nfValue.equalsIgnoreCase(ml.getValue())) {
                     result.setValid(true);
                     result.setMessage(ml.getValidationPositiveMessage());
+                    result.setColor(ml.getColorOk());
 
                 } else {
                     result.setValid(false);
                     result.setMessage(ml.getValidationNegativeMessage());
+                    result.setColor(ml.getColorError());
+
                 }
                 result.setExpectedValue(ml.getValue());
                 result.setEvidencedValue(nfValue);
                 result.setKey(ml.getKey());
                 result.setCustomerId(customerId);
                 result.setDate(new Date());
-                result.setColor(ml.getColor());
                 result. setUuid(uuid);
                 results.add(result);
             }

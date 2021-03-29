@@ -1,11 +1,9 @@
 package com.mercurio.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -65,7 +63,7 @@ public class Customer {
 
     @OneToMany
     @JoinColumn(name = "customer_id")
-    private List<MetadataList> metadataList;
+    private List<DocumentAttribute> documentAttributes;
 
     public long getId() {
         return id;
@@ -395,11 +393,11 @@ public class Customer {
         this.prestadorIdentificacaoCnpj = prestadorIdentificacaoCnpj;
     }
 
-    public List<MetadataList> getMetadataList() {
-        return metadataList;
+    public List<DocumentAttribute> getDocumentAttribute() {
+        return documentAttributes;
     }
 
-    public void setMetadataList(List<MetadataList> metadataList) {
-        this.metadataList = metadataList;
+    public void setDocumentAttribute(List<DocumentAttribute> documentAttributes) {
+        this.documentAttributes = documentAttributes;
     }
 }

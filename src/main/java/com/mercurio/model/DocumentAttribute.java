@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class MetadataList {
+public class DocumentAttribute {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,8 @@ public class MetadataList {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    private String color;
+    private String colorOk;
+    private String colorError;
 
     public long getId() {
         return id;
@@ -92,11 +93,19 @@ public class MetadataList {
         this.validationNegativeMessage = validationNegativeMessage;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorOk() {
+        return colorOk;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorOk(String colorOk) {
+        this.colorOk = colorOk;
+    }
+
+    public String getColorError() {
+        return colorError;
+    }
+
+    public void setColorError(String colorError) {
+        this.colorError = colorError;
     }
 }

@@ -1,19 +1,5 @@
-2021-03-27 00:11:30,829 [http-nio-8080-exec-1] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:13:38,204 [http-nio-8080-exec-2] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:14:38,549 [http-nio-8080-exec-1] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:17:10,436 [http-nio-8080-exec-2] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:20:02,755 [http-nio-8080-exec-3] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:39:19,168 [http-nio-8080-exec-10] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:41:09,992 [http-nio-8080-exec-2] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:42:36,199 [http-nio-8080-exec-5] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:43:43,666 [http-nio-8080-exec-7] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:45:05,608 [http-nio-8080-exec-1] INFO  (NfService.java:62) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:46:45,376 [http-nio-8080-exec-2] INFO  (NfService.java:66) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:53:03,438 [http-nio-8080-exec-2] INFO  (NfService.java:67) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 00:58:23,235 [http-nio-8080-exec-1] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 01:00:21,500 [http-nio-8080-exec-5] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 17:41:46,061 [http-nio-8080-exec-7] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 17:46:47,128 [http-nio-8080-exec-2] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 18:08:23,375 [http-nio-8080-exec-1] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
-  2021-03-27 19:43:40,133 [http-nio-8080-exec-4] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
+2021-03-28 00:22:22,253 [http-nio-8080-exec-6] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
+  2021-03-28 00:26:04,768 [http-nio-8080-exec-2] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
+  2021-03-28 00:30:57,676 [http-nio-8080-exec-3] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
+  2021-03-28 00:36:33,606 [http-nio-8080-exec-4] INFO  (NfService.java:68) - ---------- Processo de validacao de NF : Nfe.xml
   
